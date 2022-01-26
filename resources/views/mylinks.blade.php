@@ -14,8 +14,8 @@
         <style>
             html, body {
                 background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
+                color: black;
+                font-family: Geneva, Arial, Helvetica, sans-serif;
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
@@ -63,26 +63,46 @@
                 margin-bottom: 30px;
             }
         </style>
+        <script type="text/javascript">
+            function addlink() {
+                var link = link_input.value;
+                const request = new XMLHttpRequest();
+                const url = "/api/links/";
+                const params = "link=" + link;
+                request.open("POST", url, true);
+                request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                request.addEventListener("readystatechange", () => {
+                    if(request.readyState === 4 && request.status === 200) {       
+                        alert(request.responseText);
+                    }
+                });
+                request.send(params);
+            }
+        </script>               
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref">
             <div class="content">
-                <div class="title m-b-md">
-                    ShortLinks
-                </div>
-
-                <div class="links">
-                    @if (Route::has('login'))
-                            @auth
-                                <a href="{{ url('/home') }}">Мои ссылки</a>
-                                <a href="{{ url('/logout') }}"> Выйти </a>
-                            @else
-                                <a href="{{ route('login') }}">Войти</a>
-                                <a href="{{ route('register') }}">Регистрация</a>
-                            @endauth
-                    @endif
-                    <a href="https://github.com/Murtakhan/short-links">GitHub</a>
-                </div>
+                <form onsubmit="addlink();">
+                    <input type="text" id="link_input" name="link" placeholder="Введите ссылку и нажмите Enter">
+                    <button type="button">Добавить</button>
+                </form>
+                <table class="mylinks">
+                    <thead>
+                        <tr>
+                            <th>Оригинал</th>
+                            <th>Сокращение</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            @foreach($links as $link)
+                            <tr>
+                                <td>{{ $link->origin_href }}</td>
+                                <td><a href="{{ $link->origin_href }}">{{ $link->short_link }}</a></td>
+                            </tr>
+                            @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </body>

@@ -65,26 +65,24 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref">
+        <div class="flex-center position-ref full-height">
             <div class="content">
-                <form action="/api/links" method="POST">
-                    <input type="text" name="link" placeholder="Добавьте ссылку">
-                    <button type="submit">Добавить</button>
-                </form>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Оригинал</th>
-                            <th>Сокращение</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>http://gfffdgdfgdfgdf.ru</td>
-                            <td><a href="">dkgnkhlt</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="title m-b-md">
+                    ShortLinks
+                </div>
+
+                <div class="links">
+                    @if (Route::has('login'))
+                            @auth
+                                <a href="{{ url('/mylinks') }}">Мои ссылки</a>
+                                <a href="{{ url('/logout') }}"> Выйти </a>
+                            @else
+                                <a href="{{ route('login') }}">Войти</a>
+                                <a href="{{ route('register') }}">Регистрация</a>
+                            @endauth
+                    @endif
+                    <a href="https://github.com/Murtakhan/short-links">GitHub</a>
+                </div>
             </div>
         </div>
     </body>
