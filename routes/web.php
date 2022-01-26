@@ -11,6 +11,8 @@
 |
 */
 
+use App\Link;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,9 +23,6 @@ Route::get('/home', function () {
     return view('welcome');
 });
 
-Route::get('/mylinks', function () {
-    return view('mylinks');
-});
-
+Route::get('/mylinks', 'MylinksController@index');
 Route::get('/logout', 'HomeController@index')->name('home');
 Route::get('/logout', 'LogoutController@logout');
