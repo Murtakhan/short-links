@@ -83,19 +83,11 @@
     <body>
         <div class="flex-center position-ref">
             <div class="content">
-<<<<<<< HEAD
-                <form onsubmit="addlink();">
-                    <input type="text" id="link_input" name="link" placeholder="Введите ссылку и нажмите Enter">
-                    <button type="button">Добавить</button>
-                </form>
-                <table class="mylinks">
-=======
-                <form action="/api/links" method="POST">
-                    <input type="text" name="link" placeholder="Добавьте ссылку">
-                    <button type="submit">Добавить</button>
-                </form>
-                <table>
->>>>>>> 733b5b5a74fdd24506db8e857e266b7f71136467
+            <form onsubmit="addlink();">
+                <input type="text" id="link_input" name="link" placeholder="Введите ссылку и нажмите Enter">
+                <button type="button">Добавить</button>
+            </form>
+            <table class="mylinks">
                     <thead>
                         <tr>
                             <th>Оригинал</th>
