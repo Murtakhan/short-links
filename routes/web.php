@@ -20,5 +20,10 @@ Auth::routes();
 Route::get('/home', function () {
     return view('welcome');
 });
+
+Route::get('/mylinks', function () {
+    return view('mylinks');
+});
+
 Route::get('/logout', 'HomeController@index')->name('home');
 Route::get('/logout', 'LogoutController@logout');
