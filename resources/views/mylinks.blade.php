@@ -62,6 +62,18 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            form {
+                margin: 20px 0px 20px 0px;
+            }
+            form input {
+                width: 300px;
+                height: 30px;
+            }
+
+            form button {
+                height: 35px;
+            }
         </style>
         <script type="text/javascript">
             function addlink() {
